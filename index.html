@@ -1,23 +1,1102 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SoftOrbit — IT Troubleshooting & Knowledge Hub</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="SoftOrbit IT Troubleshooting & Knowledge Hub">
+  <title>SoftOrbit — IT Troubleshooting & Knowledge Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div id="particles" class="particles"></div>
-<header class="top"><div class="brand"><span class="logo">◉</span><div><strong>SoftOrbit</strong><small>IT KNOWLEDGE HUB</small></div></div><div class="welcome">Welcome, <b>Asraful Alom</b> · <span>moh.asraful.alom</span></div><div class="top-actions"><select id="language" aria-label="Language"></select><button id="theme" title="Theme">☾</button></div></header>
-<div class="layout">
-<aside class="side"><div class="side-title">Knowledge Library</div><input id="search" placeholder="Search AD, MikroTik, CrowdStrike…"><div class="filters" id="filters"></div><nav id="nav"></nav><div class="note">SoftOrbit is a personal IT knowledge hub. Product features can vary by version, OS, license and tenant. Validate production changes before deployment.</div></aside>
-<main>
-<section class="hero"><div><div class="eyebrow">SOFTORBIT v3 · IT TROUBLESHOOTING & KNOWLEDGE HUB</div><h1>Learn. Troubleshoot.<br><span>Fix with confidence.</span></h1><p>Active Directory, MikroTik RouterOS, CrowdStrike Falcon, Windows, networking, CCTV and infrastructure knowledge in one searchable workspace.</p><div class="typing">Currently exploring: <b id="typingText"></b><i></i></div><div class="chips"><span>Active Directory</span><span>MikroTik</span><span>CrowdStrike</span><span>Networking</span><span>Windows</span><span>CCTV</span></div></div><div class="hero-card"><div class="orbit">SOFT<br>ORBIT</div><strong id="count">0</strong><small>Knowledge topics</small><div class="meter"><i></i></div><small>Interactive local reference</small></div></section>
-<section id="troubleshooting"><div class="section-head"><div><div class="eyebrow">01 · KNOWLEDGE DATABASE</div><h2>IT Troubleshooting Modules</h2><p class="muted">Search by issue, symptom, command, product or keyword.</p></div><span id="resultsInfo"></span></div><div id="cards" class="grid"></div><div id="noResults" class="empty hidden">No matching topic found.</div></section>
-<section id="lab"><div class="eyebrow">02 · DEEP-DIVE PLAYBOOK</div><h2>Problem → Diagnosis → Solution</h2><div id="detail" class="detail"><p>Select a topic above.</p></div></section>
-<section id="tools"><div class="eyebrow">03 · IT TOOLS</div><h2>Quick Tools</h2><div class="tools-grid"><article class="tool"><h3>IPv4 Subnet Calculator</h3><input id="ipInput" value="192.168.10.0/24"><button id="calcIp">Calculate</button><pre id="ipOut"></pre></article><article class="tool"><h3>Password Generator</h3><input id="pwLen" type="number" min="8" max="64" value="18"><button id="genPw">Generate & Copy</button><pre id="pwOut"></pre></article><article class="tool"><h3>Unix Timestamp</h3><div id="timestamp" class="big-number">—</div><button id="refreshTimestamp">Refresh</button></article></div></section>
-<section id="feedback"><div class="eyebrow">04 · COMMUNITY FEEDBACK</div><h2>Help improve SoftOrbit</h2><div class="feedback-card"><div class="feedback-buttons"><button class="feedback-btn" data-feedback="helpful">👍 Helpful</button><button class="feedback-btn" data-feedback="needs-work">👎 Needs work</button></div><p id="feedbackMessage" class="muted"></p><form id="commentForm" class="comment-form"><input id="commentName" placeholder="Your name" required><textarea id="commentText" placeholder="Share a correction, experience or suggestion…" required></textarea><button type="submit">Post Comment</button></form><div id="commentsList"></div></div></section>
-<section id="sources"><div class="eyebrow">05 · REFERENCES</div><h2>Official References</h2><div class="sources"><a href="https://developer.crowdstrike.com/falcon-mcp/modules/overview" target="_blank" rel="noopener">CrowdStrike Falcon module overview ↗</a><a href="https://developer.crowdstrike.com/api-reference/collections/firewall-policies/" target="_blank" rel="noopener">CrowdStrike Firewall Policies API ↗</a><a href="https://developer.crowdstrike.com/api-reference/collections/device-control-policies/" target="_blank" rel="noopener">CrowdStrike Device Control API ↗</a><a href="https://help.mikrotik.com/docs/" target="_blank" rel="noopener">MikroTik Documentation ↗</a><a href="https://learn.microsoft.com/windows-server/identity/ad-ds/" target="_blank" rel="noopener">Microsoft Active Directory ↗</a></div></section>
-<footer>SoftOrbit · IT Troubleshooting & Knowledge Hub · <span id="year"></span></footer>
-</main></div>
-<script src="js/data.js"></script><script src="js/app.js"></script>
-</body></html>
+  <div id="particles" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="SoftOrbit home">
+      <span class="brand-mark">◉</span>
+      <span><b>Soft</b>Orbit<small>IT KNOWLEDGE HUB</small></span>
+    </a>
+
+    <button id="menuToggle" class="icon-btn mobile-only" aria-label="Open menu">☰</button>
+
+    <nav id="navLinks" class="nav-links">
+      <a class="nav-link active" href="#home">Home</a>
+      <a class="nav-link" href="#troubleshooting">Troubleshooting</a>
+      <a class="nav-link" href="#crowdstrike-firewall">CrowdStrike</a>
+      <a class="nav-link" href="#toolkit">Toolkit</a>
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#feedback">Feedback</a>
+    </nav>
+
+    <div class="header-actions">
+      <label class="language-box" title="Language">
+        <span>🌐</span>
+        <select id="languageSelect" aria-label="Select language">
+            <option value="en">English</option>
+            <option value="bn">বাংলা</option>
+        </select>
+      </label>
+      <button id="themeToggle" class="icon-btn" title="Toggle theme">☾</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-glow glow-a"></div>
+      <div class="hero-glow glow-b"></div>
+      <div class="hero-content reveal">
+        <div class="eyebrow">WELCOME TO SOFTORBIT</div>
+        <h1>Find the problem.<br><span>Understand the cause.</span><br>Apply the solution.</h1>
+        <p class="hero-lead">
+          A practical IT troubleshooting knowledge hub covering Active Directory,
+          MikroTik, networking, Windows, CCTV, hardware and infrastructure.
+        </p>
+        <div class="hero-meta">
+          <span>👤 Md. Asraful Alom</span>
+          <span>✉ moh.asraful.alom@gmail.com</span>
+          <span>✉ softorbit360@gmail.com</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn primary" href="#troubleshooting">Explore Troubleshooting →</a>
+          <a class="btn ghost" href="#toolkit">Open IT Toolkit</a>
+        </div>
+      </div>
+
+      <div class="hero-terminal reveal-right">
+        <div class="terminal-bar"><span></span><span></span><span></span><b>softorbit://diagnostics</b></div>
+        <div class="terminal-body">
+          <div><span class="prompt">$</span> softorbit scan --mode enterprise</div>
+          <div class="muted">Loading knowledge modules...</div>
+          <div><span class="ok">✓</span> Active Directory</div>
+          <div><span class="ok">✓</span> MikroTik RouterOS</div>
+          <div><span class="ok">✓</span> Network Diagnostics</div>
+          <div><span class="ok">✓</span> Windows & Hardware</div>
+          <div><span class="ok">✓</span> CCTV & Infrastructure</div>
+          <div><span class="ok">✓</span> CrowdStrike Firewall</div>
+          <div class="typing-line"><span class="prompt">›</span> <span id="typingText">Active Directory</span><span class="cursor">▋</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-wrap">
+      <div class="stats-grid">
+        <div class="stat-card"><strong class="stat-number" data-count="100">0+</strong><span>Languages</span></div>
+        <div class="stat-card"><strong class="stat-number" data-count="30">0+</strong><span>Knowledge Guides</span></div>
+        <div class="stat-card"><strong class="stat-number" data-count="8">0+</strong><span>IT Categories</span></div>
+        <div class="stat-card"><strong class="stat-number" data-count="24">0+</strong><span>Practical Tools</span></div>
+      </div>
+    </section>
+
+    <section id="troubleshooting" class="section">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">KNOWLEDGE BASE</div>
+          <h2>IT Troubleshooting</h2>
+          <p>Search by symptom, technology, command, cause or keyword.</p>
+        </div>
+        <div id="resultsInfo" class="results-info">0 solutions</div>
+      </div>
+
+      <div class="search-panel reveal">
+        <div class="search-wrap">
+          <span>⌕</span>
+          <input id="searchInput" type="search" autocomplete="off"
+                 placeholder="Try: gateway alive internet down, GPO, DNS, NAT, failover...">
+          <button id="clearSearch" class="clear-search" aria-label="Clear search">×</button>
+        </div>
+        <div id="filterBar" class="filter-bar"></div>
+      </div>
+
+      <div id="troubleshootingResults" class="issue-grid"></div>
+
+      <div id="noResults" class="empty-state hidden">
+        <div class="empty-icon">⌕</div>
+        <h3>No matching solution found</h3>
+        <p>Try a broader keyword such as <b>DNS</b>, <b>GPO</b>, <b>failover</b>, <b>DHCP</b> or <b>MikroTik</b>.</p>
+      </div>
+    </section>
+
+    <section id="featured" class="section alt">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">FEATURED GUIDE</div>
+          <h2>MikroTik Multi-WAN Failover</h2>
+          <p>Your four-link scenario presented as an interactive learning guide.</p>
+        </div>
+      </div>
+
+      <div class="topology-card reveal">
+        <div class="topology">
+          <div class="wan-col">
+            <div class="wan active"><b>① ISP-1 Primary</b><small>Preferred • distance 1</small></div>
+            <div class="wan"><b>② ISP-2 Primary</b><small>Backup • distance 2</small></div>
+            <div class="wan"><b>③ ISP-2 Secondary</b><small>Backup • distance 3</small></div>
+            <div class="wan"><b>④ ISP-2 Radio</b><small>Last resort • distance 4</small></div>
+          </div>
+          <div class="flow-line"><span>WAN</span><i></i><i></i><i></i><i></i></div>
+          <div class="router-node">
+            <div class="router-icon">⚡</div>
+            <b>MikroTik RouterOS</b>
+            <small>Route selection + monitoring</small>
+          </div>
+          <div class="flow-line right"><span>LAN</span><i></i></div>
+          <div class="lan-node">
+            <div>🖥️</div><b>LAN / Users</b><small>Services & endpoints</small>
+          </div>
+        </div>
+
+        <div class="guide-grid">
+          <article class="info-card">
+            <h3>Distance-based failover</h3>
+            <p>Lower route distance is preferred. If the active route becomes unavailable according to its check, the next eligible route can take over.</p>
+            <div class="code-box">
+              <button class="copy-btn" data-copy="/ip route
+add dst-address=0.0.0.0/0 gateway=ISP-1_Primary_GATEWAY distance=1 check-gateway=ping comment=&quot;ISP-1 Primary&quot;
+
+/ip route
+add dst-address=0.0.0.0/0 gateway=ISP-2_PRIMARY_GATEWAY distance=2 check-gateway=ping comment=&quot;ISP-2 Pimary&quot;
+
+/ip route
+add dst-address=0.0.0.0/0 gateway=ISP-2_SECONDARY_GATEWAY distance=3 check-gateway=ping comment=&quot;ISP-2 Secondary&quot;
+
+/ip route
+add dst-address=0.0.0.0/0 gateway=ISP-1_Secondary_GATEWAY distance=4 check-gateway=ping comment=&quot;ISP-1 Radio&quot;">📋 Copy</button>
+              <pre class="notranslate"><code>/ip route
+add dst-address=0.0.0.0/0 gateway=ISP-1_Primary_GATEWAY distance=1 check-gateway=ping comment="ISP-1 Primary"
+
+add dst-address=0.0.0.0/0 gateway=AGNI_PRIMARY_GATEWAY distance=2 check-gateway=ping comment="ISP-2 Pimary"
+
+add dst-address=0.0.0.0/0 gateway=AGNI_SECONDARY_GATEWAY distance=3 check-gateway=ping comment="ISP-2 Secondary"
+
+add dst-address=0.0.0.0/0 gateway=LINK4_GATEWAY distance=4 check-gateway=ping comment="ISP-1 Radio"</code></pre>
+            </div>
+          </article>
+
+          <article class="info-card">
+            <h3>Gateway alive ≠ Internet healthy</h3>
+            <div class="mini-flow">
+              <span>Router</span><b>→</b><span>Gateway ✓</span><b>→</b><span>ISP Core ✕</span><b>→</b><span>Internet ✕</span>
+            </div>
+            <p><b>check-gateway=ping</b> can confirm gateway reachability, but a gateway may still respond while an upstream path is unavailable.</p>
+            <div class="callout warning">⚠️ For production, choose monitoring targets and failure logic carefully. A public monitoring host can itself be unavailable.</div>
+          </article>
+
+          <article class="info-card">
+            <h3>Recursive route concept</h3>
+            <div class="mini-flow vertical">
+              <span>MikroTik</span><b>↓</b><span>Gateway</span><b>↓</b><span>ISP</span><b>↓</b><span>8.8.8.8 / 1.1.1.1</span></div>
+            <p>Recursive routing can test reachability beyond the directly connected gateway. Scope/target-scope and route design must match the actual RouterOS configuration.</p>
+          </article>
+
+          <article class="info-card">
+            <h3>Validation checklist</h3>
+            <label class="check"><input type="checkbox"> Verify WAN interfaces</label>
+            <label class="check"><input type="checkbox"> Verify WAN IP addresses</label>
+            <label class="check"><input type="checkbox"> Verify gateway reachability</label>
+            <label class="check"><input type="checkbox"> Verify Internet reachability</label>
+            <label class="check"><input type="checkbox"> Check existing default routes</label>
+            <label class="check"><input type="checkbox"> Check NAT / masquerade</label>
+            <label class="check"><input type="checkbox"> Check DNS</label>
+            <label class="check"><input type="checkbox"> Run controlled failover test</label>
+            <div class="progress"><span id="checkProgress"></span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+     CROWDSTRIKE FIREWALL MODULE
+     ========================================================= -->
+
+<section id="crowdstrike-firewall" class="section">
+  <div class="section-head reveal">
+    <div>
+      <div class="eyebrow">SECURITY MODULE</div>
+      <h2>CrowdStrike Firewall Management</h2>
+      <p>
+        Endpoint firewall concepts, policy design, rule logic,
+        troubleshooting and validation workflow.
+      </p>
+    </div>
+
+    <div class="results-info">
+      CrowdStrike • Firewall
+    </div>
+  </div>
+
+  <!-- Module Navigation -->
+  <div class="module-nav reveal">
+    <button class="module-tab active" data-cs-tab="overview">
+      🛡️ Overview
+    </button>
+
+    <button class="module-tab" data-cs-tab="policy">
+      📋 Policy
+    </button>
+
+    <button class="module-tab" data-cs-tab="rules">
+      🔥 Firewall Rules
+    </button>
+
+    <button class="module-tab" data-cs-tab="troubleshooting">
+      🔧 Troubleshooting
+    </button>
+
+    <button class="module-tab" data-cs-tab="validation">
+      ✅ Validation
+    </button>
+  </div>
+
+  <!-- =====================================================
+       OVERVIEW
+       ===================================================== -->
+
+  <div class="cs-panel active" data-cs-panel="overview">
+
+    <div class="guide-grid">
+
+      <article class="info-card reveal">
+        <div class="tool-icon">🛡️</div>
+
+        <h3>What is Firewall Management?</h3>
+
+        <p>
+          CrowdStrike Firewall Management provides centralized
+          management of endpoint firewall policies and rules.
+          Instead of manually configuring every endpoint,
+          administrators can organize hosts into appropriate
+          groups and apply controlled firewall policies.
+        </p>
+
+        <div class="callout">
+          💡 Think of the architecture as:
+          <br><br>
+
+          <b>Falcon Console</b>
+          →
+          <b>Policy</b>
+          →
+          <b>Host Group</b>
+          →
+          <b>Endpoint Firewall</b>
+          →
+          <b>Traffic Decision</b>
+        </div>
+      </article>
+
+
+      <article class="info-card reveal">
+
+        <h3>Firewall Decision Flow</h3>
+
+        <div class="mini-flow vertical">
+
+          <span>Endpoint</span>
+          <b>↓</b>
+
+          <span>Network Traffic</span>
+          <b>↓</b>
+
+          <span>Firewall Policy</span>
+          <b>↓</b>
+
+          <span>Rule Matching</span>
+          <b>↓</b>
+
+          <span>Allow / Block</span>
+
+        </div>
+
+        <p>
+          When troubleshooting a blocked connection, verify
+          the endpoint, assigned policy, applicable rule,
+          traffic direction, protocol, port and network context.
+        </p>
+
+      </article>
+
+
+      <article class="info-card reveal">
+
+        <h3>Typical Administration Workflow</h3>
+
+        <label class="check">
+          <input type="checkbox">
+          Identify affected endpoint
+        </label>
+
+        <label class="check">
+          <input type="checkbox">
+          Identify host group
+        </label>
+
+        <label class="check">
+          <input type="checkbox">
+          Identify assigned firewall policy
+        </label>
+
+        <label class="check">
+          <input type="checkbox">
+          Review applicable rule group
+        </label>
+
+        <label class="check">
+          <input type="checkbox">
+          Verify protocol and port
+        </label>
+
+        <label class="check">
+          <input type="checkbox">
+          Verify source / destination
+        </label>
+
+        <label class="check">
+          <input type="checkbox">
+          Test the connection
+        </label>
+
+        <label class="check">
+          <input type="checkbox">
+          Document the change
+        </label>
+
+      </article>
+
+    </div>
+  </div>
+
+
+  <!-- =====================================================
+       POLICY
+       ===================================================== -->
+
+  <div class="cs-panel" data-cs-panel="policy">
+
+    <div class="guide-grid">
+
+      <article class="info-card reveal">
+
+        <h3>Firewall Policy Structure</h3>
+
+        <div class="code-box">
+
+          <pre class="notranslate"><code>Firewall Policy
+│
+├── Host / Host Group
+│
+├── Platform
+│
+├── Rule Groups
+│   │
+│   ├── Rule 01
+│   ├── Rule 02
+│   ├── Rule 03
+│   └── Rule 04
+│
+└── Enforcement / Action</code></pre>
+
+        </div>
+
+        <p>
+          A clean policy structure makes troubleshooting much
+          easier. Avoid creating unnecessary duplicate rules
+          when an existing rule group can be reused.
+        </p>
+
+      </article>
+
+
+      <article class="info-card reveal">
+
+        <h3>Policy Design Principles</h3>
+
+        <div class="callout">
+          <b>1.</b> Define the required traffic first.
+        </div>
+
+        <div class="callout">
+          <b>2.</b> Keep rules specific.
+        </div>
+
+        <div class="callout">
+          <b>3.</b> Avoid unnecessarily broad rules.
+        </div>
+
+        <div class="callout">
+          <b>4.</b> Separate server, workstation and special-purpose policies where appropriate.
+        </div>
+
+        <div class="callout">
+          <b>5.</b> Test policy changes with a controlled host before wider deployment.
+        </div>
+
+      </article>
+
+
+      <article class="info-card reveal">
+
+        <h3>Policy Troubleshooting</h3>
+
+        <p>
+          If a firewall rule appears correct but traffic is still
+          blocked, don't immediately create another allow rule.
+          First determine which policy and rule are actually
+          affecting the endpoint.
+        </p>
+
+        <div class="callout warning">
+          ⚠️ More rules do not necessarily mean better security.
+          Incorrect rule ordering, scope or assignment can make
+          troubleshooting significantly harder.
+        </div>
+
+      </article>
+
+    </div>
+  </div>
+
+
+  <!-- =====================================================
+       FIREWALL RULES
+       ===================================================== -->
+
+  <div class="cs-panel" data-cs-panel="rules">
+
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">RULE BUILDER CONCEPT</div>
+        <h2>Firewall Rule Anatomy</h2>
+        <p>
+          Understand the major elements used when designing
+          an endpoint firewall rule.
+        </p>
+      </div>
+    </div>
+
+
+    <div class="guide-grid">
+
+      <article class="info-card reveal">
+
+        <h3>Traffic Direction</h3>
+
+        <div class="pill-row">
+
+          <span>Inbound</span>
+          <span>Outbound</span>
+
+        </div>
+
+        <p>
+          Always establish whether the connection originates
+          from the endpoint or is coming toward the endpoint.
+        </p>
+
+      </article>
+
+
+      <article class="info-card reveal">
+
+        <h3>Protocol</h3>
+
+        <div class="pill-row">
+
+          <span>TCP</span>
+          <span>UDP</span>
+          <span>ICMP</span>
+
+        </div>
+
+        <p>
+          The protocol must match the actual application traffic.
+          A TCP rule does not automatically permit equivalent UDP
+          traffic.
+        </p>
+
+      </article>
+
+
+      <article class="info-card reveal">
+
+        <h3>Port</h3>
+
+        <div class="code-box">
+
+          <button
+            class="copy-btn"
+            data-copy="TCP/443
+TCP/80
+TCP/3389
+UDP/53">
+            📋 Copy
+          </button>
+
+          <pre class="notranslate"><code>TCP/443
+TCP/80
+TCP/3389
+UDP/53</code></pre>
+
+        </div>
+
+        <p>
+          Define ports according to the actual application
+          requirement instead of allowing unnecessary port ranges.
+        </p>
+
+      </article>
+
+
+      <article class="info-card reveal">
+
+        <h3>Traffic Scope</h3>
+
+        <div class="pill-row">
+
+          <span>Source</span>
+          <span>Destination</span>
+          <span>Network</span>
+          <span>Application</span>
+
+        </div>
+
+        <p>
+          The narrower and more accurate the rule scope,
+          the easier it becomes to understand its security impact.
+        </p>
+
+      </article>
+
+
+      <article class="info-card reveal">
+
+        <h3>Action</h3>
+
+        <div class="mini-flow">
+
+          <span>Traffic Match</span>
+          <b>→</b>
+          <span>Rule</span>
+          <b>→</b>
+          <span>Allow / Block</span>
+
+        </div>
+
+        <p>
+          The action determines what should happen when the
+          defined traffic matches the rule.
+        </p>
+
+      </article>
+
+
+      <article class="info-card reveal">
+
+        <h3>Example Rule Logic</h3>
+
+        <div class="code-box">
+
+          <button
+            class="copy-btn"
+            data-copy="Direction: Outbound
+Protocol: TCP
+Destination Port: 443
+Purpose: HTTPS
+Action: Allow">
+            📋 Copy
+          </button>
+
+          <pre class="notranslate"><code>Direction: Outbound
+Protocol: TCP
+Destination Port: 443
+Purpose: HTTPS
+Action: Allow</code></pre>
+
+        </div>
+
+        <p>
+          This is a conceptual example for understanding rule
+          structure. Actual production rules should be based on
+          your environment and approved security requirements.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <!-- Rule Builder -->
+
+    <div class="tool-card reveal" style="margin-top:24px">
+
+      <div class="tool-icon">🔥</div>
+
+      <h3>Interactive Firewall Rule Builder</h3>
+
+      <div class="rule-builder">
+
+        <label>
+          Direction
+
+          <select id="csDirection">
+            <option>Outbound</option>
+            <option>Inbound</option>
+          </select>
+
+        </label>
+
+
+        <label>
+          Protocol
+
+          <select id="csProtocol">
+            <option>TCP</option>
+            <option>UDP</option>
+            <option>ICMP</option>
+          </select>
+
+        </label>
+
+
+        <label>
+          Destination / Source
+
+          <input
+            id="csDestination"
+            placeholder="Example: 10.10.10.0/24">
+        </label>
+
+
+        <label>
+          Port
+
+          <input
+            id="csPort"
+            placeholder="Example: 443">
+        </label>
+
+
+        <label>
+          Action
+
+          <select id="csAction">
+            <option>Allow</option>
+            <option>Block</option>
+          </select>
+
+        </label>
+
+      </div>
+
+
+      <button
+        class="btn primary"
+        id="buildCrowdStrikeRule">
+
+        Generate Rule Summary
+
+      </button>
+
+
+      <div
+        id="crowdStrikeRuleResult"
+        class="tool-result"
+        style="margin-top:16px">
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       TROUBLESHOOTING
+       ===================================================== -->
+
+  <div class="cs-panel" data-cs-panel="troubleshooting">
+
+    <div class="guide-grid">
+
+      <article class="info-card reveal">
+
+        <h3>🔴 Application Cannot Connect</h3>
+
+        <p><b>Symptoms:</b></p>
+
+        <ul>
+          <li>Application opens but cannot connect.</li>
+          <li>Server connection fails.</li>
+          <li>Browser/application shows timeout.</li>
+        </ul>
+
+        <p><b>Check:</b></p>
+
+        <ol>
+          <li>Endpoint firewall policy.</li>
+          <li>Applicable host group.</li>
+          <li>Direction of traffic.</li>
+          <li>Protocol.</li>
+          <li>Destination IP.</li>
+          <li>Destination port.</li>
+          <li>Existing allow/block rule.</li>
+        </ol>
+
+        <div class="callout">
+          💡 Do not start by creating a broad
+          <b>Allow Any / Any</b> rule.
+          Identify the actual required traffic first.
+        </div>
+
+      </article>
+
+
+      <article class="info-card reveal">
+
+        <h3>🔴 RDP Not Working</h3>
+
+        <p>
+          When troubleshooting Remote Desktop connectivity,
+          verify that the expected RDP traffic is permitted,
+          the destination host is reachable and the endpoint
+          firewall policy is actually assigned to that host.
+        </p>
+
+        <div class="code-box">
+
+          <button
+            class="copy-btn"
+            data-copy="Windows PowerShell diagnostic examples:
+
+Test-NetConnection SERVER_IP -Port 3389
+
+Get-NetTCPConnection -LocalPort 3389">
+            📋 Copy
+          </button>
+
+          <pre class="notranslate"><code>Test-NetConnection SERVER_IP -Port 3389
+
+Get-NetTCPConnection -LocalPort 3389</code></pre>
+
+        </div>
+
+        <div class="callout warning">
+          ⚠️ Replace SERVER_IP with the actual authorized
+          destination host.
+        </div>
+
+      </article>
+
+
+      <article class="info-card reveal">
+
+        <h3>🔴 DNS Works / Application Fails</h3>
+
+        <p>
+          DNS resolution alone does not prove that the application
+          traffic is permitted.
+        </p>
+
+        <div class="mini-flow vertical">
+
+          <span>DNS Resolution ✓</span>
+          <b>↓</b>
+          <span>IP Reachability</span>
+          <b>↓</b>
+          <span>Port Connectivity</span>
+          <b>↓</b>
+          <span>Application Session</span>
+
+        </div>
+
+        <p>
+          Test each layer separately instead of assuming that
+          successful DNS means the firewall is correctly configured.
+        </p>
+
+      </article>
+
+
+      <article class="info-card reveal">
+
+        <h3>🔴 Rule Created but No Effect</h3>
+
+        <p>Check:</p>
+
+        <label class="check">
+          <input type="checkbox">
+          Correct host group?
+        </label>
+
+        <label class="check">
+          <input type="checkbox">
+          Correct endpoint?
+        </label>
+
+        <label class="check">
+          <input type="checkbox">
+          Correct platform?
+        </label>
+
+        <label class="check">
+          <input type="checkbox">
+          Correct protocol?
+        </label>
+
+        <label class="check">
+          <input type="checkbox">
+          Correct direction?
+        </label>
+
+        <label class="check">
+          <input type="checkbox">
+          Correct port?
+        </label>
+
+        <label class="check">
+          <input type="checkbox">
+          Policy enabled?
+        </label>
+
+        <label class="check">
+          <input type="checkbox">
+          Sensor communicating?
+        </label>
+
+      </article>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       VALIDATION
+       ===================================================== -->
+
+  <div class="cs-panel" data-cs-panel="validation">
+
+    <div class="topology-card reveal">
+
+      <div class="section-head">
+
+        <div>
+
+          <div class="eyebrow">
+            CHANGE VALIDATION
+          </div>
+
+          <h2>Firewall Change Checklist</h2>
+
+          <p>
+            Complete the checklist before considering a firewall
+            change validated.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="guide-grid">
+
+        <article class="info-card">
+
+          <h3>Before Change</h3>
+
+          <label class="check">
+            <input type="checkbox">
+            Document current policy
+          </label>
+
+          <label class="check">
+            <input type="checkbox">
+            Identify affected hosts
+          </label>
+
+          <label class="check">
+            <input type="checkbox">
+            Identify business requirement
+          </label>
+
+          <label class="check">
+            <input type="checkbox">
+            Identify required ports
+          </label>
+
+          <label class="check">
+            <input type="checkbox">
+            Define rollback plan
+          </label>
+
+        </article>
+
+
+        <article class="info-card">
+
+          <h3>After Change</h3>
+
+          <label class="check">
+            <input type="checkbox">
+            Test expected connection
+          </label>
+
+          <label class="check">
+            <input type="checkbox">
+            Test unrelated traffic
+          </label>
+
+          <label class="check">
+            <input type="checkbox">
+            Verify endpoint status
+          </label>
+
+          <label class="check">
+            <input type="checkbox">
+            Review security events
+          </label>
+
+          <label class="check">
+            <input type="checkbox">
+            Document final result
+          </label>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+    
+    <section id="toolkit" class="section">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">IT TOOLKIT</div>
+          <h2>Quick tools</h2>
+          <p>Useful client-side tools for everyday troubleshooting.</p>
+        </div>
+      </div>
+
+      <div class="tool-grid">
+        <article class="tool-card reveal">
+          <div class="tool-icon">🌐</div>
+          <h3>IPv4 Subnet Calculator</h3>
+          <label>IPv4 address <input id="ipInput" value="192.168.1.10"></label>
+          <label>Prefix <input id="prefixInput" type="number" min="0" max="32" value="24"></label>
+          <button class="btn small primary" id="calcSubnet">Calculate</button>
+          <div id="subnetResult" class="tool-result"></div>
+        </article>
+
+        <article class="tool-card reveal">
+          <div class="tool-icon">🔐</div>
+          <h3>Password Generator</h3>
+          <div class="password-output"><input id="passwordOutput" readonly><button id="copyPassword">Copy</button></div>
+          <div class="range-row"><input id="passwordLength" type="range" min="8" max="40" value="16"><span id="passwordLengthValue">16</span></div>
+          <button class="btn small primary" id="generatePassword">Generate</button>
+        </article>
+
+        <article class="tool-card reveal">
+          <div class="tool-icon">🕒</div>
+          <h3>Timestamp</h3>
+          <div id="timestampTool" class="timestamp">—</div>
+          <button class="btn small primary" id="refreshTimestamp">Refresh</button>
+        </article>
+
+        <article class="tool-card reveal">
+          <div class="tool-icon">🧩</div>
+          <h3>Base64</h3>
+          <textarea id="base64Input" placeholder="Text..."></textarea>
+          <div class="two-buttons">
+            <button class="btn small" id="encode64">Encode</button>
+            <button class="btn small" id="decode64">Decode</button>
+          </div>
+          <textarea id="base64Output" placeholder="Result..."></textarea>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="section alt">
+      <div class="about-grid">
+        <div class="about-card reveal">
+          <div class="eyebrow">ABOUT SOFTORBIT</div>
+          <h2>Practical knowledge, not just documentation.</h2>
+          <p>SoftOrbit is designed as a personal IT knowledge hub: searchable troubleshooting notes, commands, diagnostic checklists, tools and lessons learned from real infrastructure work.</p>
+          <div class="pill-row"><span>Active Directory</span><span>MikroTik</span><span>Networking</span><span>Windows</span><span>CCTV</span><span>Hardware</span><span>IP Phone</span><span>Security</span></div>
+        </div>
+        <div class="about-card reveal-right">
+          <div class="quote-mark">“</div>
+          <h3>Diagnose first. Change second.</h3>
+          <p>Production systems should be changed only after the environment, dependencies and rollback plan are understood.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="feedback" class="section">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">COMMUNITY FEEDBACK</div>
+          <h2>Was this guide helpful?</h2>
+          <p>Feedback is stored locally in this static version. A future backend can sync it to a database.</p>
+        </div>
+      </div>
+
+      <div class="feedback-layout">
+        <div class="feedback-card reveal">
+          <div class="feedback-buttons">
+            <button class="feedback-btn" data-rating="helpful">👍 Helpful</button>
+            <button class="feedback-btn" data-rating="not-helpful">👎 Needs work</button>
+          </div>
+          <textarea id="feedbackText" placeholder="Share your experience, correction or suggestion..."></textarea>
+          <button id="submitFeedback" class="btn primary">Submit Feedback</button>
+          <div id="feedbackMessage" class="form-message"></div>
+        </div>
+
+        <div class="feedback-card reveal-right">
+          <h3>Recent local comments</h3>
+          <div id="commentList" class="comment-list"></div>
+          <div class="comment-form">
+            <input id="commentName" placeholder="Your name">
+            <textarea id="commentText" placeholder="Write a comment..."></textarea>
+            <button id="submitComment" class="btn small">Post Comment</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="solutionModal" class="modal" aria-hidden="true">
+    <div class="modal-dialog">
+      <button id="modalClose" class="modal-close" aria-label="Close">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">Copied!</div>
+
+  <footer class="site-footer">
+    <div><b>SoftOrbit</b> — IT Knowledge Hub</div>
+    <div>© <span id="currentYear"></span> Md. Asraful Alom</div>
+  </footer>
+   <div id="google_translate_element" class="translate-hidden"></div>
+
+<script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,bn',
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+</script>
+
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+  <div id="google_translate_element" class="translate-hidden"></div>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
