@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SoftOrbit — IT Troubleshooting & Knowledge Hub</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="particles" class="particles"></div>
+<header class="top"><div class="brand"><span class="logo">◉</span><div><strong>SoftOrbit</strong><small>IT KNOWLEDGE HUB</small></div></div><div class="welcome">Welcome, <b>Asraful Alom</b> · <span>moh.asraful.alom</span></div><div class="top-actions"><select id="language" aria-label="Language"></select><button id="theme" title="Theme">☾</button></div></header>
+<div class="layout">
+<aside class="side"><div class="side-title">Knowledge Library</div><input id="search" placeholder="Search AD, MikroTik, CrowdStrike…"><div class="filters" id="filters"></div><nav id="nav"></nav><div class="note">SoftOrbit is a personal IT knowledge hub. Product features can vary by version, OS, license and tenant. Validate production changes before deployment.</div></aside>
+<main>
+<section class="hero"><div><div class="eyebrow">SOFTORBIT v3 · IT TROUBLESHOOTING & KNOWLEDGE HUB</div><h1>Learn. Troubleshoot.<br><span>Fix with confidence.</span></h1><p>Active Directory, MikroTik RouterOS, CrowdStrike Falcon, Windows, networking, CCTV and infrastructure knowledge in one searchable workspace.</p><div class="typing">Currently exploring: <b id="typingText"></b><i></i></div><div class="chips"><span>Active Directory</span><span>MikroTik</span><span>CrowdStrike</span><span>Networking</span><span>Windows</span><span>CCTV</span></div></div><div class="hero-card"><div class="orbit">SOFT<br>ORBIT</div><strong id="count">0</strong><small>Knowledge topics</small><div class="meter"><i></i></div><small>Interactive local reference</small></div></section>
+<section id="troubleshooting"><div class="section-head"><div><div class="eyebrow">01 · KNOWLEDGE DATABASE</div><h2>IT Troubleshooting Modules</h2><p class="muted">Search by issue, symptom, command, product or keyword.</p></div><span id="resultsInfo"></span></div><div id="cards" class="grid"></div><div id="noResults" class="empty hidden">No matching topic found.</div></section>
+<section id="lab"><div class="eyebrow">02 · DEEP-DIVE PLAYBOOK</div><h2>Problem → Diagnosis → Solution</h2><div id="detail" class="detail"><p>Select a topic above.</p></div></section>
+<section id="tools"><div class="eyebrow">03 · IT TOOLS</div><h2>Quick Tools</h2><div class="tools-grid"><article class="tool"><h3>IPv4 Subnet Calculator</h3><input id="ipInput" value="192.168.10.0/24"><button id="calcIp">Calculate</button><pre id="ipOut"></pre></article><article class="tool"><h3>Password Generator</h3><input id="pwLen" type="number" min="8" max="64" value="18"><button id="genPw">Generate & Copy</button><pre id="pwOut"></pre></article><article class="tool"><h3>Unix Timestamp</h3><div id="timestamp" class="big-number">—</div><button id="refreshTimestamp">Refresh</button></article></div></section>
+<section id="feedback"><div class="eyebrow">04 · COMMUNITY FEEDBACK</div><h2>Help improve SoftOrbit</h2><div class="feedback-card"><div class="feedback-buttons"><button class="feedback-btn" data-feedback="helpful">👍 Helpful</button><button class="feedback-btn" data-feedback="needs-work">👎 Needs work</button></div><p id="feedbackMessage" class="muted"></p><form id="commentForm" class="comment-form"><input id="commentName" placeholder="Your name" required><textarea id="commentText" placeholder="Share a correction, experience or suggestion…" required></textarea><button type="submit">Post Comment</button></form><div id="commentsList"></div></div></section>
+<section id="sources"><div class="eyebrow">05 · REFERENCES</div><h2>Official References</h2><div class="sources"><a href="https://developer.crowdstrike.com/falcon-mcp/modules/overview" target="_blank" rel="noopener">CrowdStrike Falcon module overview ↗</a><a href="https://developer.crowdstrike.com/api-reference/collections/firewall-policies/" target="_blank" rel="noopener">CrowdStrike Firewall Policies API ↗</a><a href="https://developer.crowdstrike.com/api-reference/collections/device-control-policies/" target="_blank" rel="noopener">CrowdStrike Device Control API ↗</a><a href="https://help.mikrotik.com/docs/" target="_blank" rel="noopener">MikroTik Documentation ↗</a><a href="https://learn.microsoft.com/windows-server/identity/ad-ds/" target="_blank" rel="noopener">Microsoft Active Directory ↗</a></div></section>
+<footer>SoftOrbit · IT Troubleshooting & Knowledge Hub · <span id="year"></span></footer>
+</main></div>
+<script src="js/data.js"></script><script src="js/app.js"></script>
+</body></html>
