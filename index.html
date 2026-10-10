@@ -14,7 +14,45 @@
 <section class="hero"><div><div class="eyebrow">SOFTORBIT v3 · IT TROUBLESHOOTING & KNOWLEDGE HUB</div><h1>Learn. Troubleshoot.<br><span>Fix with confidence.</span></h1><p>Ms Active Directory, MikroTik RouterOS, Firewall, Windows, networking, CCTV and infrastructure knowledge in one searchable workspace.</p><div class="typing">Currently exploring: <b id="typingText"></b><i></i></div><div class="chips"><span>Ms Active Directory</span><span>MikroTik</span><span>CrowdStrike</span><span>Networking</span><span>Windows</span><span>CCTV</span></div></div><div class="hero-card"><div class="orbit">SOFT<br>ORBIT</div><strong id="count">0</strong><small>Knowledge topics</small><div class="meter"><i></i></div><small>Interactive local reference</small></div></section>
 <section id="troubleshooting"><div class="section-head"><div><div class="eyebrow">01 · KNOWLEDGE DATABASE</div><h2>IT Troubleshooting Modules</h2><p class="muted">Search by issue, symptom, command, product or keyword.</p></div><span id="resultsInfo"></span></div><div id="cards" class="grid"></div><div id="noResults" class="empty hidden">No matching topic found.</div></section>
 <section id="lab"><div class="eyebrow">02 · DEEP-DIVE PLAYBOOK</div><h2>Problem → Diagnosis → Solution</h2><div id="detail" class="detail"><p>Select a topic above.</p></div></section>
-<section id="tools"><div class="eyebrow">03 · IT TOOLS</div><h2>Quick Tools</h2><div class="tools-grid"><article class="tool"><h3>IPv4 Subnet Calculator</h3><input id="ipInput" value="192.168.10.0/24"><button id="calcIp">Calculate</button><pre id="ipOut"></pre></article><article class="tool"><h3>Password Generator</h3><input id="pwLen" type="number" min="8" max="64" value="18"><button id="genPw">Generate & Copy</button><pre id="pwOut"></pre></article><article class="tool"><h3>Unix Timestamp</h3><div id="timestamp" class="big-number">—</div><button id="refreshTimestamp">Refresh</button></article></div></section>
+<section id="tools"><div class="eyebrow">03 · IT TOOLS</div><h2>Quick Tools</h2><div class="tools-grid"><article class="tool">
+  <h3>IPv4 Calculator</h3>
+  <div class="ip-calculator">
+    <label>IPv4 Address:</label>
+    <input id="ipAddress" value="192.168.10.1">
+
+    <label>Prefix:</label>
+    <input type="range" id="prefixSlider" min="8" max="30" value="24" oninput="updatePrefix()">
+    <span id="prefixValue">/24</span>
+
+    <label>Subnet Mask:</label>
+    <select id="subnetMask" onchange="updateMask()">
+      <option value="255.255.255.0" selected>/24</option>
+      <option value="255.255.255.128">/25</option>
+      <option value="255.255.255.192">/26</option>
+      <option value="255.255.255.224">/27</option>
+      <option value="255.255.255.240">/28</option>
+      <option value="255.255.255.248">/29</option>
+      <option value="255.255.255.252">/30</option>
+    </select>
+
+    <button onclick="calculateSubnet()">Calculate</button>
+
+    <div id="networkDetails">
+      <p>Network Address: <span id="network"></span></p>
+      <p>First Host: <span id="firstHost"></span></p>
+      <p>Last Host: <span id="lastHost"></span></p>
+      <p>Broadcast Address: <span id="broadcast"></span></p>
+      <p>Hosts/Subnet: <span id="hosts"></span></p>
+    </div>
+
+    <div id="binaryNotation">
+      <p>IPv4 Address (binary): <span id="ipBinary"></span></p>
+      <p>Subnet Mask (binary): <span id="maskBinary"></span></p>
+      <p>Wildcard Mask (binary): <span id="wildBinary"></span></p>
+    </div>
+  </div>
+</article>
+<article class="tool"><h3>Password Generator</h3><input id="pwLen" type="number" min="8" max="64" value="18"><button id="genPw">Generate & Copy</button><pre id="pwOut"></pre></article><article class="tool"><h3>Unix Timestamp</h3><div id="timestamp" class="big-number">—</div><button id="refreshTimestamp">Refresh</button></article></div></section>
 <section id="feedback"><div class="eyebrow">04 · COMMUNITY FEEDBACK</div><h2>Help improve SoftOrbit</h2><div class="feedback-card"><div class="feedback-buttons"><button class="feedback-btn" data-feedback="helpful">👍 Helpful</button><button class="feedback-btn" data-feedback="needs-work">👎 Needs work</button></div><p id="feedbackMessage" class="muted"></p><form id="commentForm" class="comment-form"><input id="commentName" placeholder="Your name" required><textarea id="commentText" placeholder="Share a correction, experience or suggestion…" required></textarea><button type="submit">Post Comment</button></form><div id="commentsList"></div></div></section>
 <section id="sources"><div class="eyebrow">05 · REFERENCES</div><h2>Official References</h2><div class="sources"><a href="https://developer.crowdstrike.com/falcon-mcp/modules/overview" target="_blank" rel="noopener">CrowdStrike Falcon module overview ↗</a><a href="https://developer.crowdstrike.com/api-reference/collections/firewall-policies/" target="_blank" rel="noopener">CrowdStrike Firewall Policies API ↗</a><a href="https://developer.crowdstrike.com/api-reference/collections/device-control-policies/" target="_blank" rel="noopener">CrowdStrike Device Control API ↗</a><a href="https://help.mikrotik.com/docs/" target="_blank" rel="noopener">MikroTik Documentation ↗</a><a href="https://learn.microsoft.com/windows-server/identity/ad-ds/" target="_blank" rel="noopener">Microsoft Active Directory ↗</a></div></section>
 <footer>SoftOrbit · IT Troubleshooting & Knowledge Hub · <span id="year"></span></footer>
