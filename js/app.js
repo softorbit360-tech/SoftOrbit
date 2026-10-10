@@ -19,40 +19,22 @@ function initComments(){renderComments();$('#commentForm').onsubmit=e=>{e.preven
 function renderComments(){const arr=JSON.parse(localStorage.getItem('softorbit-comments')||'[]');$('#commentsList').innerHTML=arr.length?arr.slice(0,8).map(c=>`<div class="comment"><b>${escapeHTML(c.name)}</b><small>${escapeHTML(c.date)}</small><p>${escapeHTML(c.text)}</p></div>`).join(''):'<p class="muted">No comments yet.</p>';}
 function escapeHTML(v){return String(v).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
 document.addEventListener('DOMContentLoaded',init);
-// IPv4 Calculator functions
-function updatePrefix() {
-  const prefix = document.getElementById("prefixSlider").value;
-  document.getElementById("prefixValue").innerText = "/" + prefix;
-}
+// === IPv4 Calculator ===
+document.getElementById("calcIp")?.addEventListener("click", () => {
+  const input = document.getElementById("ipInput").value; // যেমন 192.168.10.0/24
+  const [ip, prefix] = input.split("/");
+  const prefixNum = parseInt(prefix);
 
-function updateMask() {
-  const mask = document.getElementById("subnetMask").value;
-  document.getElementById("maskBinary").innerText = maskToBinary(mask);
-  document.getElementById("wildBinary").innerText = maskToWildcard(mask);
-}
+  // Subnet mask বের করা
+  const mask = prefixToMask(prefixNum);
+  const hosts = Math.pow(2, 32 - prefixNum) - 2;
 
-function calculateSubnet() {
-  const ip = document.getElementById("ipAddress").value;
-  const prefix = parseInt(document.getElementById("prefixSlider").value);
-  const subnetMask = prefixToMask(prefix);
+  // Output দেখানো
+  document.getElementById("ipOut").textContent =
+    `IP: ${ip}\nPrefix: /${prefixNum}\nMask: ${mask}\nUsable Hosts: ${hosts}`;
+});
 
-  document.getElementById("maskBinary").innerText = maskToBinary(subnetMask);
-  document.getElementById("wildBinary").innerText = maskToWildcard(subnetMask);
-  document.getElementById("hosts").innerText = Math.pow(2, 32 - prefix) - 2;
-
-  const ipParts = ip.split(".").map(Number);
-  const maskParts = subnetMask.split(".").map(Number);
-  const networkParts = ipParts.map((p, i) => p & maskParts[i]);
-  const broadcastParts = ipParts.map((p, i) => p | (~maskParts[i] & 255));
-
-  document.getElementById("network").innerText = networkParts.join(".");
-  document.getElementById("broadcast").innerText = broadcastParts.join(".");
-  document.getElementById("firstHost").innerText = networkParts.slice(0,3).join(".") + "." + (networkParts[3] + 1);
-  document.getElementById("lastHost").innerText = broadcastParts.slice(0,3).join(".") + "." + (broadcastParts[3] - 1);
-
-  document.getElementById("ipBinary").innerText = ipParts.map(p => p.toString(2).padStart(8,"0")).join(".");
-}
-
+// Helper function
 function prefixToMask(prefix) {
   let mask = [];
   for (let i = 0; i < 4; i++) {
@@ -61,12 +43,3 @@ function prefixToMask(prefix) {
   }
   return mask.join(".");
 }
-
-function maskToBinary(mask) {
-  return mask.split(".").map(octet => parseInt(octet).toString(2).padStart(8, "0")).join(".");
-}
-
-function maskToWildcard(mask) {
-  return mask.split(".").map(octet => (255 - parseInt(octet)).toString(2).padStart(8, "0")).join(".");
-}
-
