@@ -15,4 +15,12 @@
   border-radius: 6px;
   background: var(--card-bg);
 }
+/* IPv4 Calculator styling */
+#ipOut {
+  background: var(--card-bg);
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 8px;
+  white-space: pre-line;
+}
 
