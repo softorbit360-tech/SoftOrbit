@@ -25,16 +25,13 @@ document.getElementById("calcIp")?.addEventListener("click", () => {
   const [ip, prefix] = input.split("/");
   const prefixNum = parseInt(prefix);
 
-  // Subnet mask বের করা
   const mask = prefixToMask(prefixNum);
   const hosts = Math.pow(2, 32 - prefixNum) - 2;
 
-  // Output দেখানো
   document.getElementById("ipOut").textContent =
     `IP: ${ip}\nPrefix: /${prefixNum}\nMask: ${mask}\nUsable Hosts: ${hosts}`;
 });
 
-// Helper function
 function prefixToMask(prefix) {
   let mask = [];
   for (let i = 0; i < 4; i++) {
@@ -43,3 +40,22 @@ function prefixToMask(prefix) {
   }
   return mask.join(".");
 }
+
+// === Password Generator ===
+document.getElementById("genPw")?.addEventListener("click", () => {
+  const length = parseInt(document.getElementById("pwLen").value);
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+  let password = "";
+  for (let i = 0; i < length; i++) {
+    password += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  document.getElementById("pwOut").textContent = password;
+  navigator.clipboard.writeText(password);
+});
+
+// === Unix Timestamp ===
+function refreshTimestamp() {
+  document.getElementById("timestamp").textContent = Math.floor(Date.now() / 1000);
+}
+document.getElementById("refreshTimestamp")?.addEventListener("click", refreshTimestamp);
+refreshTimestamp(); // প্রথমবার লোড হওয়ার সময় দেখাবে
